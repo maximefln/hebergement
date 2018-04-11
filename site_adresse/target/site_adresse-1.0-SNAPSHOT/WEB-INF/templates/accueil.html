@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang ="fr" xmlns:th="http://wwww.thymeleaf.org">
+
+	<head>
+		<title>L'Adresse</title>
+		<meta charset="utf-8">
+		<link rel="shortcut icon" type = "image/x-icon" href = "img/logo_position.png"><!--logo affiché à coté du titre de la page-->
+		<link rel="stylesheet" href="../css/styleprincipale.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!-- utilisation d'une librairie pour les logos des réseaux sociaux dans le footer-->
+	</head>
+
+	<body>
+
+<!-- Menu de navigation en haut de la fenêtre-->
+		<header th:insert="~{fragments :: menu}"></header>
+
+		<section class = "corps"><!-- pour laisser une marge de chaque côté du contenu -->
+			<section id="banniere"><!-- Bannière de présentation du nom, du logo et du slogan -->
+				<div id="texte_banniere">
+					<h1 id="nom">L'Adresse</h1> 
+					<p id="description">Venez la découvrir.</p>
+				</div>
+
+				<figure id="image_banniere">
+					<img id = "logo" src="img/accueil/adresse_logo.png" alt="logo de l'adresse">
+				</figure>
+			</section>
+
+			<div id = "presentation">
+				<p class = "description_association">Cher petit gourmand, chercheur de bonnes adresses et de bons plans, laisse-nous te présenter notre nouvelle association : L’Adresse.</p>
+				<p class = "description_association">Toujours en quête de nouveautés pour t’amuser et passer du bon temps entre amis, en famille ou en amoureux sans te ruiner, notre équipe est là pour dénicher ton futur QG ou ton restau bon marché.</p>
+				<p class = "description_association">Lassé de ton restaurant habituel, ou à la recherche d’un nouveau bar sympa ? Ne perd plus ton temps et trouve ton bonheur sur notre application, entièrement dédiée aux bons plans et bonnes adresses de notre ville.</p>
+			<a href = equipe><button class = "derouleur"><span>Qui sommes nous ?</span></button></a>
+			</div>
+
+			<!-- Affichage, sous forme de carte, des trois dernières adresses enregistrée dans la base de données avec un lien vers leur article -->
+			<!-- Les cartes sont réunis en trois groupes : bars, restaurants, musées -->
+		</section>
+
+		<!-- Affichage du premier groupe : les bars-->
+		<section id = "dernieres_adresses">
+			<section class = "corps">
+				<h1 class ="titre_nouvelles">Nos derniers bars</h1>
+				<section  class="nouvelles">
+					<div th:each="article : ${listBar}">
+						<div th:replace="~{fragments :: carte}" class="carte_presentation"></div>
+					</div>
+				</section>
+
+				<!-- affichage du deuxième groupe : les restaurants -->
+
+				<h1 class = "titre_nouvelles">Nos derniers restaurants</h1>
+				<section class="nouvelles">
+					<div th:each="article : ${listRestaurant}">
+						<div th:replace="~{fragments :: carte}" class="carte_presentation"></div>
+					</div>
+				</section>
+
+				<!-- Affichage du troisième groupe : les musées -->
+
+				<h1 class = "titre_nouvelles">Nos derniers musées</h1>
+				<section class="nouvelles">
+					<div th:each="article : ${listMusee}">
+						<div th:replace="~{fragments :: carte}" class="carte_presentation"></div>
+					</div>
+				</section>
+			</section>
+		</section>
+
+		<!-- Footer contenant un lien vers différents supports de l'adresse -->
+
+		<footer th:replace="~{fragments :: footer}"></footer>
+
+	</body>
+
+	
+</html>
+

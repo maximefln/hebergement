@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang ="fr" xmlns:th="http://wwww.thymeleaf.org">
+
+<head>
+    <title>L'Adresse</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type = "image/x-icon" href = "img/logo_position.png"><!--logo affiché à coté du titre de la page-->
+    <link rel="stylesheet" href="../css/admin_all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!-- utilisation d'une librairie pour les logos des réseaux sociaux dans le footer-->
+</head>
+
+<body>
+
+<header>
+    <nav class="menu_principal">
+        <div class="boite_menu"><!-- boite qui contient les liens vers les autres pages pour les centrer-->
+            <a href="admin">AJOUTER UN ARTICLE</a>
+            <a href="recommander">LES RECOMMANDATIONS</a>
+            <a href="commentaire">GERER LES COMMENTAIRES</a>
+            <a href="messagerie">MESSAGERIE</a>
+            <a href="deconnexion">DECONNEXION</a>
+        </div>
+    </nav>
+
+</header>
+
+<div id = "corps">
+    <section class = "modification_1">
+
+        <h1>Messages reçus</h1>
+
+        <table>
+
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Prénom Nom</th>
+                <th>Adresse mail</th>
+                <th>Message</th>
+                <th>Supprimer</th>
+            </tr>
+
+            <tr th:each="message : ${listMessage}">
+                <td th:text="${message.id}"></td>
+                <td th:text="${message.date}">Date inconnue</td>
+                <td th:text="${message.prenom}+' '+${message.nom}">identité inconnue</td>
+                <td th:text="${message.adresse_mail}">Adresse mail inconnue</td>
+                <td th:text="${message.message}">message vide</td>
+                <td><button class = "supprimer"><a th:href="'supprimerMessage?id='+${message.id}">Supprimer</a></button></td>
+            </tr>
+
+        </table>
+    </section>
+</div>
+</body>
+</html>
