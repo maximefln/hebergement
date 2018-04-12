@@ -10,4 +10,6 @@ public interface ArticleDao {
     void likeArticle(Integer id);
     void dislikeArticle(Integer id);
     Article getArticle(Integer id);
+    void addArticle(Article article);
+    void deleteArticle(int id);
 }

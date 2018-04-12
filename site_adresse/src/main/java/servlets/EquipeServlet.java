@@ -1,5 +1,7 @@
 package servlets;
 
+import entities.Membre;
+import managers.MembreLibrary;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/equipe")
 public class EquipeServlet extends HttpServlet {
@@ -27,6 +30,10 @@ public class EquipeServlet extends HttpServlet {
         engine.setTemplateResolver(resolver);
 
         WebContext context = new WebContext(req, resp, req.getServletContext());
+
+        List<Membre> listofmembre = MembreLibrary.getInstance().listMembre();
+
+        context.setVariable("listMembre", listofmembre);
 
         engine.process("equipe",context, resp.getWriter());
     }

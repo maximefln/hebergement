@@ -16,10 +16,11 @@
 			<header>
 				<nav class="menu_principal">
 					<div class="boite_menu"><!-- boite qui contient les liens vers les autres pages pour les centrer-->
-						<a href="admin">AJOUTER UN ARTICLE</a>
+						<a href="/admin/admin">AJOUTER UN ARTICLE</a>
 						<a href="/admin/recommander">LES RECOMMANDATIONS</a>
 						<a href="/admin/commentaire">GERER LES COMMENTAIRES</a>
 						<a href="/admin/messagerie">MESSAGERIE</a>
+						<a href="/admin/membre">MEMBRES</a>
 						<a href="/admin/deconnexion">DECONNEXION</a>
 					</div>
 				</nav>
@@ -31,7 +32,7 @@
 
 						<h1>Ajouter un article</h1>
 
-						<form method="POST" enctype="multipart/form-data">
+						<form method="POST">
 							<label><b>Type de l'article</b></label>
 						    <input class = "admin_form" type="text" placeholder="Type" name="type" list = "type_lieu" required>
 
@@ -39,11 +40,11 @@
 								<option value = "Bar"></option>
 								<option value = "Restaurant"></option>
 								<option value = "Musée"></option>
-								<option value = "Autre"></option>
 							</datalist>
 
 			      			<label><b>Nom de l'adresse</b></label>
 			      			<input class = "admin_form" type="text" placeholder="Nom" name="nom" required>
+
 
 			      			<label><b>Nom de la personne ayant visité le bar</b></label>
 			      			<input class = "admin_form" type="text" placeholder="Nom de la personne" name="nom_personne" required>
@@ -52,13 +53,19 @@
 			      			<input class = "admin_form" type="number" placeholder="Note" name="note" required>
 
 			      			<label><b>Courte Description</b></label>
-			      			<input class = "admin_form" type="text" placeholder="une description en quelques mots" name="nom" required>
+			      			<input class = "admin_form" type="text" placeholder="une description en quelques mots" name="description" required>
 
 			      			<label><b>Coordonnées sur google map : coordonnée x</b></label>
 			      			<input class = "admin_form" type="text" placeholder="50.090656" name="coordonnee_x" required>
 
                             <label><b>Coordonnées sur google map : coordonnée y</b></label>
                             <input class = "admin_form" type="text" placeholder="6.090656" name="coordonnee_y" required>
+
+							<label><b>Lien de l'article</b></label>
+							<input class = "admin_form" type="text" placeholder="Lien de l'article" name="article" required>
+
+							<label><b>Lien de l'image d'accueil</b></label>
+							<input class = "admin_form" type="text" placeholder="Lien de l'image" name="accueil" required>
 
 			      			<button class = "derouleur commentaire" type="submit"><span>Ajouter l'article</span></button>
 			      		</form>

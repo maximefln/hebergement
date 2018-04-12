@@ -67,12 +67,21 @@ public class Article {
 
     //Les getteurs et setteurs de la classe article
 
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public LocalDate getDate_ajout() {
+        return date_ajout;
+    }
+
+    public void setDate_ajout(LocalDate date_ajout) {
+        this.date_ajout = date_ajout;
     }
 
     public String getNom() {
@@ -83,14 +92,6 @@ public class Article {
         this.nom = nom;
     }
 
-    public String getPresentation() {
-        return presentation;
-    }
-
-    public void setPrsentation(String présentation_accueil) {
-        presentation = présentation_accueil;
-    }
-
     public String getType() {
         return type;
     }
@@ -99,12 +100,20 @@ public class Article {
         this.type = type;
     }
 
+    public String getPresentation() {
+        return presentation;
+    }
+
+    public void setPresentation(String presentation) {
+        this.presentation = presentation;
+    }
+
     public String getVisiteur() {
         return Visiteur;
     }
 
     public void setVisiteur(String visiteur) {
-        this.Visiteur = visiteur;
+        Visiteur = visiteur;
     }
 
     public double getCoordonnee_x() {
@@ -112,14 +121,14 @@ public class Article {
     }
 
     public void setCoordonnee_x(double coordonnee_x) {
-        this.coordonnee_x = coordonnee_x ;
+        this.coordonnee_x = coordonnee_x;
     }
 
     public double getCoordonnee_y() {
         return coordonnee_y;
     }
 
-    public void getCoordonnee_y(double coordonnee_y) {
+    public void setCoordonnee_y(double coordonnee_y) {
         this.coordonnee_y = coordonnee_y;
     }
 
@@ -147,19 +156,19 @@ public class Article {
         this.note = note;
     }
 
-    public Integer getNb_like() {
+    public int getNb_like() {
         return nb_like;
     }
 
-    public void setNb_like(Integer nb_like) {
+    public void setNb_like(int nb_like) {
         this.nb_like = nb_like;
     }
 
-    public Integer getNbdislike() {
+    public int getNbdislike() {
         return nbdislike;
     }
 
-    public void setNbdislike(Integer nb_dislike) {
-        this.nbdislike = nb_dislike;
+    public void setNbdislike(int nbdislike) {
+        this.nbdislike = nbdislike;
     }
 }

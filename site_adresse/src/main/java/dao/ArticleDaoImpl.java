@@ -1,5 +1,6 @@
 package dao;
 
+import Exceptions.CommentaireRunTimeException;
 import entities.Article;
 
 import java.sql.*;
@@ -35,7 +36,7 @@ public class ArticleDaoImpl implements ArticleDao {
     public List<Article> listArticle() {
         String query = "SELECT * FROM adresse ORDER BY adresse.date_ajout DESC;";
         List<Article> listArticle = new ArrayList();
-       // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+        // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
         try (
                 Connection connection = DataSourceProvider.getDataSource().getConnection();
                 Statement statement = connection.createStatement();
@@ -56,10 +57,10 @@ public class ArticleDaoImpl implements ArticleDao {
                         resultSet.getInt("note"),
                         resultSet.getInt("nb_like"),
                         resultSet.getInt("nbdislike"))
-                    );
-                }
-            } catch (SQLException e){
-                e.printStackTrace();
+                );
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
         }
         return listArticle;
     }
@@ -77,7 +78,7 @@ public class ArticleDaoImpl implements ArticleDao {
     public void likeArticle(Integer id){
         String query = "UPDATE adresse SET nb_like=nb_like+1 WHERE id=?";
         try( Connection connection = DataSourceProvider.getDataSource().getConnection();
-            PreparedStatement statement = connection.prepareStatement(query)) {
+             PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -145,9 +146,44 @@ public class ArticleDaoImpl implements ArticleDao {
                 }
             }
         } catch(SQLException e){
-                e.printStackTrace();
+            e.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public void addArticle(Article article){
+        try (Connection connection = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement statement = connection.prepareStatement(("INSERT INTO adresse(date_ajout, Nom, Type, presentation, Visiteur, coordonnee_x, coordonnee_y, lien_image, lien_image_accueil, note, nb_like, nbdislike) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)"))){
+            statement.setDate(1, Date.valueOf(article.getDate_ajout()));
+            statement.setString(2, article.getNom());
+            statement.setString(3, article.getType());
+            statement.setString(4, article.getPresentation());
+            statement.setString(5, article.getVisiteur());
+            statement.setDouble(6, article.getCoordonnee_x());
+            statement.setDouble(7, article.getCoordonnee_y());
+            statement.setString(8, article.getLien_image());
+            statement.setString(9, article.getLien_image_accueil());
+            statement.setInt(10, article.getNote());
+            statement.setInt(11, article.getNb_like());
+            statement.setInt(12, article.getNbdislike());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new CommentaireRunTimeException("Error when adding article");
+        }
+
+    }
+
+    @Override
+    public void deleteArticle(int id) {
+        String query = "DELETE FROM adresse WHERE id=?;";
+        try (Connection connection = DataSourceProvider.getDataSource().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new CommentaireRunTimeException("Error when deleting article");
+        }
     }
 
 }

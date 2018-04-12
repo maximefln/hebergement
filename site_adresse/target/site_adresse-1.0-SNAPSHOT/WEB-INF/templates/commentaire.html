@@ -11,18 +11,7 @@
 
     <body>
 
-        <header>
-            <nav class="menu_principal">
-                <div class="boite_menu"><!-- boite qui contient les liens vers les autres pages pour les centrer-->
-                    <a href="admin">AJOUTER UN ARTICLE</a>
-                    <a href="recommander">LES RECOMMANDATIONS</a>
-                    <a href="commentaire">GERER LES COMMENTAIRES</a>
-                    <a href="messagerie">MESSAGERIE</a>
-                    <a href="deconnexion">DECONNEXION</a>
-                </div>
-            </nav>
-
-        </header>
+        <header th:replace="~{fragments :: menu_admin}"></header>
 
         <div id = "corps">
             <section class = "modification_1">

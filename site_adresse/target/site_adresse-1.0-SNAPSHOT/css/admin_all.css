@@ -11,6 +11,7 @@ body{
 
 #corps{
     width : 60%;
+    margin : auto;
 }
 /* style du menu et animation de la barre de recherche*/
 header{
@@ -115,14 +116,11 @@ div#barre_container{
 	width : 40%
 }
 
-
-
 section.modification_1{
 
-    margin-top : 15%;
-    margin-left : 650px;
-	width : 50%;
+    margin : 15% auto;
 	border : solid #eee 3px;
+    width : 800px;
 	padding : 20px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -131,6 +129,10 @@ h1{
 	font-size: 2em;
 	text-align: center;
 	margin :  0px auto 15px auto;
+}
+
+table.tableau{
+   width : 100%
 }
 
 .admin_form{

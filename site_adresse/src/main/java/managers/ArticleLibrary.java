@@ -106,4 +106,28 @@ public class ArticleLibrary {
         }
     }
 
+    /*methode qui permet d'ajouter un article
+     *
+     * @param newArticle : le nouvel article à ajouter (Article)
+     *
+     * @author MFillion
+     * @version 1.0
+     */
+
+    public void addArticle(Article article) {
+        articleDao.addArticle(article);
+    }
+
+    /*methode qui permet de supprimer un article de la base de données
+     *
+     * @param id : l'identifiant del'article à supprimer en base de données (int)
+     *
+     * @author MFillion
+     * @version 1.0
+     */
+
+    public void deleteArticle( int id){
+        articleDao.deleteArticle(id);
+    }
+
 }

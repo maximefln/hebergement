@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang ="fr" xmlns:th="http://wwww.thymeleaf.org">
+
+    <head>
+        <title>L'Adresse</title>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" type = "image/x-icon" href = "img/logo_position.png"><!--logo affiché à coté du titre de la page-->
+        <link rel="stylesheet" href="../css/admin_all.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!-- utilisation d'une librairie pour les logos des réseaux sociaux dans le footer-->
+    </head>
+
+    <body>
+
+    <header th:replace="~{fragments :: menu_admin}"></header>
+
+        <div id = "corps">
+            <section class = "modification_1">
+
+                <h1>Les membres</h1>
+
+                <table class = "tableau">
+
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Fonction</th>
+                        <th>lien_image</th>
+                        <th>Supprimer</th>
+                    </tr>
+
+                    <tr th:each="membre : ${listmembre}">
+                        <td th:text="${membre.nom}">nom inconnu</td>
+                        <td th:text="${membre.prenom}">prénom inconnu</td>
+                        <td th:text="${membre.fonction}">date inconnu</td>
+                        <td th:text="${membre.lien_image}">pas de commentaire</td>
+                        <td><button class = "supprimer"><a th:href="'supprimerMembre?id='+${membre.id}">Supprimer</a></button></td>
+                    </tr>
+
+                </table>
+            </section>
+
+            <section class = "modification_1">
+
+                <h1>Ajouter un membre</h1>
+
+                <form method="POST">
+                    <label><b>Nom (En majuscule)</b></label>
+                    <input class = "admin_form" type="text" placeholder="NOM..." name="nom" required>
+
+                    <label><b>Prénom</b></label>
+                    <input class = "admin_form" type="text" placeholder="Prénom.." name="prenom" required>
+
+                    <label><b>Fonction</b></label>
+                    <input class = "admin_form" type="text" placeholder="Fonction..." name="fonction" required>
+
+                    <label><b>Lien de l'image</b></label>
+                    <input class = "admin_form" type="text" placeholder="/img/equipe/...." name="lien" required>
+
+                    <button class = "derouleur commentaire" type="submit"><span>Ajouter le membre</span></button>
+                </form>
+            </section>
+        </div>
+    </body>
+</html>
