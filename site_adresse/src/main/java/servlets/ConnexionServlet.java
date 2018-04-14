@@ -50,7 +50,7 @@ public class ConnexionServlet extends HttpServlet{
 
             engine.process("connexion", context, resp.getWriter());
         }else {
-            ServletContextTemplateResolver resolver = new ServletContextTemplateResolver(req.getServletContext());
+            /*ServletContextTemplateResolver resolver = new ServletContextTemplateResolver(req.getServletContext());
             resolver.setPrefix("WEB-INF/templates/");
             resolver.setSuffix(".html");
             resolver.setTemplateMode(TemplateMode.HTML);
@@ -61,7 +61,9 @@ public class ConnexionServlet extends HttpServlet{
 
             WebContext context = new WebContext(req, resp, req.getServletContext());
 
-            engine.process("admin", context, resp.getWriter());
+            engine.process("admin", context, resp.getWriter());*/
+            resp.sendRedirect("/admin/admin");
+
         }
     }
 

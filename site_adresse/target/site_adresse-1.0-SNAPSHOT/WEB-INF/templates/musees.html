@@ -25,23 +25,23 @@
 				<h1>Venez découvrir nos musées</h1>
 
 				<h2 id = "bar">Cliquez sur les liens pour découvrir nos articles !</h2>
-				<div th:each="article : ${listMusee}">
-					<button class="derouleur" th:id="${article.id}">
+				<div th:each="article : ${listMusee}" class = "titre_article">
 
-						<a class = "lien_article" th:href="'article?id='+${article.id}">
+					<a class = "lien_article" th:href="'/article?id='+${article.id}" th:id="${article.id}">
 
-							<div class = conteneur_titre>
+						<div class = conteneur_titre>
 
-								<div class = "nom_adresse">
-									<p th:text="${article.Nom}">Nom bar</p>
-								</div>
-
-								<figure th:replace="~{fragments :: avis}" class = "avis"></figure>
-
+							<div class = "nom_adresse">
+								<p th:text="${article.Nom}">Nom bar</p>
 							</div>
-						</a>
 
-					</button>
+							<!-- Affichage du nombre de like et dislike par article -->
+
+							<figure th:replace="~{fragments :: avis}" class = "avis"></figure>
+
+						</div>
+					</a>
+
 				</div>
 
 			</section>

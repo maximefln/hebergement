@@ -59,12 +59,12 @@ public class AdminServlet extends HttpServlet {
         int note = Integer.parseInt(req.getParameter("note"));
         String description = req.getParameter("description");
         double coordonnee_x = Double.parseDouble(req.getParameter("coordonnee_x"));
-        double coordonne_y = Double.parseDouble(req.getParameter("coordonnee_y"));
+        double coordonnee_y = Double.parseDouble(req.getParameter("coordonnee_y"));
         String lien_article = req.getParameter("article");
         String image_accueil = req.getParameter("accueil");
 
 
-        Article article = new Article(LocalDate.now(), null, nom, type, description, nom_personne, coordonne_y, coordonne_y, lien_article, image_accueil, note, 0, 0);
+        Article article = new Article(LocalDate.now(), null, nom, type, description, nom_personne, coordonnee_x, coordonnee_y, lien_article, image_accueil, note, 0, 0);
 
         ArticleLibrary.getInstance().addArticle(article);
         resp.sendRedirect("/admin/admin");

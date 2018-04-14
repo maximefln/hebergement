@@ -1,0 +1,4 @@
+MessageDaoTestCase.class
+ArticleDaoTestCase.class
+RecommandationDaoTestCase.class
+CommentaireDaoTestCase.class

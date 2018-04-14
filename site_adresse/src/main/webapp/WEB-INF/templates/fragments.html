@@ -110,7 +110,7 @@
             <p>Horaires, les prix</p>
             <p>Recommandé par <em th:text="${article.Visiteur}">Nom du visiteur</em></p>
             <span class="fa fa-star checked" th:each="star:${#numbers.sequence(1,article.note)}"></span>
-            <span class="fa fa-star unchecked" th:each="star:${#numbers.sequence(1, 5-article.note)}"></span>
+            <span th:if="${5-article.note > 0}"><span class="fa fa-star unchecked" th:each="star:${#numbers.sequence(1, 5-article.note)}"></span></span>
         </div>
         <a th:href="'article?id='+${article.id}"  class="bouton_carte">Voir l'article</a>
     </div>

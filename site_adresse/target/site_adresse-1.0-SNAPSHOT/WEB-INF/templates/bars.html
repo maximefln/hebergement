@@ -11,7 +11,7 @@
 	    <script src="js/main.js"></script>
     </head>
 
-	<body>
+	<body id = "liste">
 
 		<!-- Menu de navigation en haut de la fenêtre-->
 		<header th:insert="~{fragments :: menu}"></header>
@@ -26,10 +26,9 @@
 
 				<!-- Liste des différents articles présents en base de données, en fonction de leur type. Ici : liste des bars-->
 
-				<div th:each="article : ${listBar}">
-					<button class="derouleur" th:id="${article.id}">
+				<div th:each="article : ${listBar}" class = "titre_article">
 
-						<a class = "lien_article" th:href="'/article?id='+${article.id}">
+						<a class = "lien_article" th:href="'/article?id='+${article.id}" th:id="${article.id}">
 
 							<div class = conteneur_titre>
 
@@ -43,8 +42,6 @@
 
 							</div>
 						</a>
-
-					</button>
 
 				</div>
 
